@@ -5,9 +5,15 @@ import { addTodo } from "../redux/todoSlice";
 const AddTodoForm = () => {
   const [value, setValue] = useState("");
 
-  const onSubmit = (event) => {
-    event.preventDefault();
+	const dispatch = useDispatch();
+
+  const onSubmit = (e) => {
+    e.preventDefault();
     console.log("user entered: " + value);
+
+		dispatch(addTodo({
+			title: value,
+		}))
   };
 
   return (
@@ -18,7 +24,7 @@ const AddTodoForm = () => {
         className="form-control mb-2 mr-sm-2"
         placeholder="Add todo..."
         value={value}
-        onChange={(event) => setValue(event.target.value)}
+        onChange={(e) => setValue(e.target.value)}
       ></input>
 
       <button type="submit" className="btn btn-primary mb-2">
