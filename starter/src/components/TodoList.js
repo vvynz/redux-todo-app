@@ -1,7 +1,10 @@
 import React from 'react';
 import TodoItem from './TodoItem';
+import { useSelector} from "react-redux";
 
 const TodoList = () => {
+	const todos = useSelector((state) =>state.todos);
+
 	const todos = [
 		{ id: 1, title: 'todo1', completed: false },
 		{ id: 2, title: 'todo2', completed: false },
